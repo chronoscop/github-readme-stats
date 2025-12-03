@@ -19,6 +19,11 @@ import { isLocaleAvailable } from "../src/translations.js";
 
 // @ts-ignore
 export default async (req, res) => {
+  // >>> 新增：根路径自动填充默认用户名 <<<
+  if (!req.query.username && req.url === "/") {
+    req.query.username = "chronosco";
+  }
+
   const {
     username,
     hide,
